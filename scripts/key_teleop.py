@@ -14,6 +14,44 @@ import rospy
 from geometry_msgs.msg import Twist
 
 
+class TextWindow():
+
+    _screen = None
+    _window = None
+    _num_lines = None
+
+    def __init__(self, stdscr, lines=10):
+        self._screen = stdscr
+        self._screen.nodelay(True)
+        curses.curs_set(0)
+
+        self._num_lines = lines
+
+    def read_key(self):
+        keycode = self._screen.getch()
+        return keycode if keycode != -1 else None
+
+    def clear(self):
+        self._screen.clear()
+
+    def write_line(self, lineno, message):
+        if lineno < 0 or lineno >= self._num_lines:
+            raise ValueError, 'lineno out of bounds'
+        height, width = self._screen.getmaxyx()
+        y = (height / self._num_lines) * lineno
+        x = 10
+        for text in message.split('\n'):
+            text = text.ljust(width)
+            self._screen.addstr(y, x, text)
+            y += 1
+
+    def refresh(self):
+        self._screen.refresh()
+
+    def beep(self):
+        curses.flash()
+        
+
 class SimpleKeyTeleop():
     def __init__(self, interface):
         self._interface = interface
