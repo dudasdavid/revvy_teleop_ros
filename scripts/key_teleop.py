@@ -121,14 +121,7 @@ class SimpleKeyTeleop():
             else:
                 self.linearSpeed = self._backward_max
         else: # 0 request
-            if abs(self.linearSpeed) < 2 * self._linear_rate:
-                self.linearSpeed = 0
-            elif self.linearSpeed > 0:
-                self.linearSpeed -= self._linear_rate
-            elif self.linearSpeed < 0:
-                self.linearSpeed += self._linear_rate
-            else:
-                raise("Invalid path")
+            self.linearSpeed = 0
             
             
         if angular != 0:
@@ -138,12 +131,8 @@ class SimpleKeyTeleop():
                 self.angularSpeed = angular*self._rotation_max
 
         else: # 0 request
-            if abs(self.angularSpeed) < 2 * self._angular_rate:
-                self.angularSpeed = 0
-            elif self.angularSpeed > 0:
-                self.angularSpeed -= self._angular_rate
-            else:
-                self.angularSpeed += self._angular_rate
+            self.angularSpeed = 0
+
             
 
         self._angular = self.angularSpeed
