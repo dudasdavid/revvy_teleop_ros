@@ -59,7 +59,7 @@ class SimpleKeyTeleop():
 
         self._hz = rospy.get_param('~hz', 10)
 
-        self._linear_rate = rospy.get_param('~linear_rate', 80.0)
+        self._linear_rate = rospy.get_param('~linear_rate', 100.0)
         self._forward_max = rospy.get_param('~forward_max', 300)
         self._backward_max = rospy.get_param('~backward_max', -300)
         self._angular_rate = rospy.get_param('~angular_rate', 20.0)
@@ -101,7 +101,7 @@ class SimpleKeyTeleop():
         now = rospy.get_time()
         keys = []
         for a in self._last_pressed:
-            if now - self._last_pressed[a] < 0.4:
+            if now - self._last_pressed[a] < 0.5:
                 keys.append(a)
         linear = 0.0
         angular = 0.0
@@ -109,6 +109,7 @@ class SimpleKeyTeleop():
             l, a = self.movement_bindings[k]
             linear += l
             angular += a
+            
         if linear > 0:
             if self.linearSpeed < self._forward_max:
                 self.linearSpeed += self._linear_rate
