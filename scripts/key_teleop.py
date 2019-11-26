@@ -63,7 +63,7 @@ class SimpleKeyTeleop():
         self._forward_max = rospy.get_param('~forward_max', 300)
         self._backward_max = rospy.get_param('~backward_max', -300)
         self._angular_rate = rospy.get_param('~angular_rate', 20.0)
-        self._rotation_max = rospy.get_param('~rotation_max', 50)
+        self._rotation_max = rospy.get_param('~rotation_max', 25)
         self._last_pressed = {}
         self._angular = 0
         self._linear = 0
