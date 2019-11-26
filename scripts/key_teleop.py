@@ -139,7 +139,7 @@ class SimpleKeyTeleop():
         else: # 0 request
             if abs(self.angularSpeed) < 2 * self._angular_rate:
                 self.angularSpeed = 0
-            else if self.angularSpeed > 0:
+            elif self.angularSpeed > 0:
                 self.angularSpeed -= self._angular_rate
             else:
                 self.angularSpeed += self._angular_rate
