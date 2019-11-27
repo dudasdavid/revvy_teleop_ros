@@ -55,15 +55,15 @@ class TextWindow():
 class SimpleKeyTeleop():
     def __init__(self, interface):
         self._interface = interface
-        self._pub_cmd = rospy.Publisher('key_vel', Twist)
+        self._pub_cmd = rospy.Publisher('cmd_vel', Twist)
 
         self._hz = rospy.get_param('~hz', 10)
 
-        self._linear_rate = rospy.get_param('~linear_rate', 100.0)
-        self._forward_max = rospy.get_param('~forward_max', 300)
-        self._backward_max = rospy.get_param('~backward_max', -300)
-        self._angular_rate = rospy.get_param('~angular_rate', 25.0)
-        self._rotation_max = rospy.get_param('~rotation_max', 50)
+        self._linear_rate = rospy.get_param('~linear_rate', 0.15) #cmd_vel is in SI (m/s, rad/s)
+        self._forward_max = rospy.get_param('~forward_max', 0.5)
+        self._backward_max = rospy.get_param('~backward_max', -0.3)
+        self._angular_rate = rospy.get_param('~angular_rate', 0.5)
+        self._rotation_max = rospy.get_param('~rotation_max', 1)
         self._last_pressed = {}
         self._angular = 0
         self._linear = 0
