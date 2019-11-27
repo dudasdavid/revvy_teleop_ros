@@ -59,11 +59,11 @@ class SimpleKeyTeleop():
 
         self._hz = rospy.get_param('~hz', 10)
 
-        self._linear_rate = rospy.get_param('~linear_rate', 0.15) #cmd_vel is in SI (m/s, rad/s)
-        self._forward_max = rospy.get_param('~forward_max', 0.5)
-        self._backward_max = rospy.get_param('~backward_max', -0.3)
-        self._angular_rate = rospy.get_param('~angular_rate', 0.5)
-        self._rotation_max = rospy.get_param('~rotation_max', 1)
+        self._linear_rate = rospy.get_param('~linear_rate', 0.07) #cmd_vel is in SI (m/s, rad/s)
+        self._forward_max = rospy.get_param('~forward_max', 0.2)
+        self._backward_max = rospy.get_param('~backward_max', -0.15)
+        self._angular_rate = rospy.get_param('~angular_rate', 0.1)
+        self._rotation_max = rospy.get_param('~rotation_max', 0.3)
         self._last_pressed = {}
         self._angular = 0
         self._linear = 0
