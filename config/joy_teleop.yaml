@@ -3,17 +3,20 @@ teleop:
     type: topic
     message_type: geometry_msgs/Twist
     topic_name: cmd_vel
-    deadman_buttons: [4]
     axis_mappings:
       -
         axis: 1
         target: linear.x
-        scale: 0.5
+        scale: 0.3
         offset: 0.0
       -
-        axis: 0
+        axis: 3
         target: angular.z
-        scale: 0.5
+        scale: 0.3
+        
+        axis: 2
+        target: angular.z
+        scale: 0.3
   hello:
     type: topic
     message_type: std_msgs/String
